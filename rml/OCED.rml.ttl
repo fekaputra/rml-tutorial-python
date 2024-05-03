@@ -1,0 +1,85 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix map: <http://mapping.example.com/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix oced: <http://w3id.org/oced/core#> .
+
+## Event mapping
+##
+map:event rdf:type rr:TriplesMap ;
+	rdfs:label "event map" ;
+	rml:logicalSource [
+			rml:iterator "$.events[*]" ;
+			rml:referenceFormulation ql:JSONPath ;
+			rdf:type rml:LogicalSource 
+		] ;
+	
+	rr:subjectMap [
+		rr:template "http://example.com/event/{id}" 
+	] ;
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type ;
+		rr:objectMap [
+			rr:constant oced:Event ;
+			rr:termType rr:IRI ;
+		] ;
+	] , [
+		rr:predicate oced:event_type ;
+		rr:objectMap [
+			rml:reference "event_type" ;
+			rr:datatype xsd:string ;
+		] ;
+	] , [
+		rr:predicate oced:time ;
+		rr:objectMap [
+			rml:reference "time" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] , [
+		rr:predicate oced:event_attribute ;
+		rr:objectMap [
+			rr:parentTriplesMap map:event_attribute ;
+		] ;
+	] ;
+.
+
+## Event Attribute Mapping
+##
+map:event_attribute rdf:type rr:TriplesMap ;
+	rdfs:label "event attribute" ;
+	rml:logicalSource [
+			rml:iterator "$.events[*]" ;
+			rml:referenceFormulation ql:JSONPath ;
+			rdf:type rml:LogicalSource 
+		] ;
+	
+	rr:subjectMap [
+		rr:template "http://example.com/event-attribute/{attributes.event_attribute_name}-{attributes.event_attribute_value}" 
+	] ;
+
+	rr:predicateObjectMap [
+		rr:predicate rdf:type ;
+		rr:objectMap [
+			rr:constant oced:EventAttribute ;
+			rr:termType rr:IRI ;
+		] 
+	] , [
+		rr:predicate oced:event_attribute_name ;
+		rr:objectMap [
+			rml:reference "attributes.event_attribute_name" ;
+			rr:datatype xsd:string ;
+		] ;
+	] , [
+		rr:predicate oced:event_attribute_value ;
+		rr:objectMap [
+			rml:reference "attributes.event_attribute_value" ;
+			rr:datatype xsd:string ;
+		] ;
+	] ;
+.

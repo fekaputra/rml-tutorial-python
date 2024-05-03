@@ -1,0 +1,65 @@
+@prefix ns1: <http://w3id.org/oced/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.com/event/2db9b59db6ca1e8fcd0d7afff4e43b737eb14e7b> a ns1:Event ;
+    ns1:event_attribute <http://example.com/event-attribute/concept%3Aname-Completed>,
+        <http://example.com/event-attribute/lifecycle%3Atransition-Closed> ;
+    ns1:event_type "Completed Closed" ;
+    ns1:time "2012-03-15T12:11:33+01:00"^^xsd:dateTime .
+
+<http://example.com/event/5cc27006b8a93cd18a8deb2e4fcf69b368b73c1b> a ns1:Event ;
+    ns1:event_attribute <http://example.com/event-attribute/concept%3Aname-Accepted>,
+        <http://example.com/event-attribute/lifecycle%3Atransition-Assigned> ;
+    ns1:event_type "Accepted Assigned" ;
+    ns1:time "2012-03-15T11:56:17+01:00"^^xsd:dateTime .
+
+<http://example.com/event/7bbc91eb9df68533a8df12019d2671391e18c7df> a ns1:Event ;
+    ns1:event_attribute <http://example.com/event-attribute/concept%3Aname-Queued>,
+        <http://example.com/event-attribute/lifecycle%3Atransition-Awaiting%20Assignment> ;
+    ns1:event_type "Queued Awaiting Assignment" ;
+    ns1:time "2006-01-11T15:49:42+01:00"^^xsd:dateTime .
+
+<http://example.com/event/9025989e6a3e24a7617a48f55f50d88be2845586> a ns1:Event ;
+    ns1:event_attribute <http://example.com/event-attribute/concept%3Aname-Accepted>,
+        <http://example.com/event-attribute/lifecycle%3Atransition-Wait> ;
+    ns1:event_type "Accepted Wait" ;
+    ns1:time "2009-12-02T14:24:32+01:00"^^xsd:dateTime .
+
+<http://example.com/event/95e2c851d40bd41f7ae57282aef10f6cf4bcc8a9> a ns1:Event ;
+    ns1:event_attribute <http://example.com/event-attribute/concept%3Aname-Accepted>,
+        <http://example.com/event-attribute/lifecycle%3Atransition-In%20Progress> ;
+    ns1:event_type "Accepted In Progress" ;
+    ns1:time "2012-03-15T11:53:52+01:00"^^xsd:dateTime .
+
+<http://example.com/event-attribute/concept%3Aname-Completed> a ns1:EventAttribute ;
+    ns1:event_attribute_name "concept:name" ;
+    ns1:event_attribute_value "Completed" .
+
+<http://example.com/event-attribute/concept%3Aname-Queued> a ns1:EventAttribute ;
+    ns1:event_attribute_name "concept:name" ;
+    ns1:event_attribute_value "Queued" .
+
+<http://example.com/event-attribute/lifecycle%3Atransition-Assigned> a ns1:EventAttribute ;
+    ns1:event_attribute_name "lifecycle:transition" ;
+    ns1:event_attribute_value "Assigned" .
+
+<http://example.com/event-attribute/lifecycle%3Atransition-Awaiting%20Assignment> a ns1:EventAttribute ;
+    ns1:event_attribute_name "lifecycle:transition" ;
+    ns1:event_attribute_value "Awaiting Assignment" .
+
+<http://example.com/event-attribute/lifecycle%3Atransition-Closed> a ns1:EventAttribute ;
+    ns1:event_attribute_name "lifecycle:transition" ;
+    ns1:event_attribute_value "Closed" .
+
+<http://example.com/event-attribute/lifecycle%3Atransition-In%20Progress> a ns1:EventAttribute ;
+    ns1:event_attribute_name "lifecycle:transition" ;
+    ns1:event_attribute_value "In Progress" .
+
+<http://example.com/event-attribute/lifecycle%3Atransition-Wait> a ns1:EventAttribute ;
+    ns1:event_attribute_name "lifecycle:transition" ;
+    ns1:event_attribute_value "Wait" .
+
+<http://example.com/event-attribute/concept%3Aname-Accepted> a ns1:EventAttribute ;
+    ns1:event_attribute_name "concept:name" ;
+    ns1:event_attribute_value "Accepted" .
+
